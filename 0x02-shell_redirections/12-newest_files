@@ -1,0 +1,3 @@
+#!/bin/bash
+ls -l | sort -k6Mr -k7nr -k8.1nbr -k8.4nbr | head
+
