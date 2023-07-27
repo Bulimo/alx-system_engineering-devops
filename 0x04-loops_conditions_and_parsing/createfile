@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+read -r filename
+echo "#!/usr/bin/env bash" >> "$filename"
+chmod +x "$filename"
