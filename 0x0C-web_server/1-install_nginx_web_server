@@ -10,4 +10,4 @@ sudo service nginx start
 # sudo nginx -t
 
 # Reload Nginx to apply the new configuration
-sudo nginx -s reload
+sudo nginx restart
