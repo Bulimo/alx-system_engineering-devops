@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# installs nginix on the server, Configures redirect_me and 4-not_found_page_404
+
+REDIRECT="\\\\n\tlocation / redirect_me {\n\t\t return 301 https://www.youtube.com;\n\t}"
+NOT_FOUND="\\\n\t\terror_page 404 /404.html;"
+File="/var/www/html/index.html"
+
+# Update the package list and install nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create an HTML file with "Hello World!"
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+if grep -q redirect_me "$File"
+then
+  sudo sed -i "47i $REDIRECT" /etc/nginx/sites-available/default #add at line 47
+fi
+
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+
+# Add the error_page directive at the appropriate location context
+sudo sed -i "/location \/ {/a $NOT_FOUND" /etc/nginx/sites-available/default 
+
+
+# Reload Nginx to apply the new configuration
+sudo service nginx restart
