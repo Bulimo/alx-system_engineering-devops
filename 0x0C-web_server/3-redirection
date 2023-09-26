@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# installs nginix on the server
+# Configure your Nginx server so that /redirect_me is redirecting to another page
+
+# REDIRECT="\\\tlocation /redirect_me {\n\t\t return 301 https://www.youtube.com\n\t}\n"
+
+# Update the package list and install nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create an HTML file with "Hello World!"
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+# Ensure Nginx is listening on port 80 by configuring its default site
+sudo unlink /etc/nginx/sites-enabled/default
+echo 'server {
+    listen 80;
+    location / {
+        root /var/www/html;
+    }
+}' | sudo tee /etc/nginx/sites-available/default
+echo 'server {
+    listen 80;
+    server_name _;
+    location /redirect_me {
+        return 301 http://youtube.com/; # Replace with the actual destination URL
+    }
+}' | sudo tee /etc/nginx/sites-available/redirect_me
+
+# sudo sed -i "30i $REDIRECT" /etc/nginx/sites-available/default #add at line 30
+
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+
+# Reload Nginx to apply the new configuration
+sudo nginx -s reload
