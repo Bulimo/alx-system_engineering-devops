@@ -28,7 +28,7 @@ file { '/var/www/html/index.html' :
 file_line { 'custom_header':
     ensure  => present,
     path    => '/etc/nginx/sites-available/default',
-    line    => "        add_header X-Served-By ${facts['networking']['hostname']};",
+    line    => "        add_header X-Served-By ${hostname};",
     after   => 'server_name _;',
     require => Package['nginx'],
 }
