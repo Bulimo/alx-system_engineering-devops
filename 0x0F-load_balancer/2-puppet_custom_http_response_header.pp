@@ -17,6 +17,13 @@ service { 'nginx':
     require => Exec['install_nginx'],
 }
 
+# root message hello world
+file { '/var/www/html/index.html' :
+    ensure  => 'file',
+    content => 'Hello World!',
+    require => Package['nginx'],
+}
+
 # Configure custom header in Nginx site configuration
 file_line { 'custom_header':
     ensure  => present,
