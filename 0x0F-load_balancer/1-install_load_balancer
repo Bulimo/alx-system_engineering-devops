@@ -4,6 +4,9 @@
 sudo apt-get update
 sudo apt-get -y install haproxy
 
+# create a backup of the existing config file
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
+
 # Configure the load balancing frontend
 echo "frontend my_frontend
     mode http

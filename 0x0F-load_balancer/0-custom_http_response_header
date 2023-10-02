@@ -5,6 +5,5 @@ sudo apt-get update
 sudo apt-get -y install nginx
 
 sudo sed -i "/server_name _;/a \\\n\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-#sudo sed -i "/server_name _;/a \\n\tadd_header X-Served-By $host;" /etc/nginx/sites-available/default
 
 sudo service nginx restart
