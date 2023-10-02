@@ -4,7 +4,6 @@
 sudo apt-get update
 sudo apt-get -y install haproxy
 
-# configure the load balancing frontend
 # Configure the load balancing frontend
 echo "frontend my_frontend
     mode http
