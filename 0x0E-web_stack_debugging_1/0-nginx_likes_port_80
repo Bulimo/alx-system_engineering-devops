@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# find out what’s keeping Ubuntu container’s Nginx installation from listening on port 80.
+# Bug: sudo nginx status returns 'not running'; netstat -lpn does not show port 80
+# different configurations in sites-enable/default and sites-available/default
+sudo pkill nginx
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo service nginx restart
