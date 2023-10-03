@@ -35,7 +35,8 @@ file_line { 'redirect_me' :
     path    => '/etc/nginx/sites-enabled/default',
     line    => '        location /redirect_me {',
     replace => false,
-    match   => 'server_name _;',
+    # match   => 'server_name _;',
+    after   => 'server_name _;',
     require => Package['nginx'],
 }
 
@@ -44,7 +45,8 @@ file_line { 'redirect_me_redirect':
     path    => '/etc/nginx/sites-available/default',
     line    => '                 return 301 https://www.youtube.com;',
     replace => false,
-    match   => 'location /redirect_me {',
+    # match   => 'location /redirect_me {',
+    after   => '        location /redirect_me {',
     require => File_line['redirect_me'],
 }
 
