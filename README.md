@@ -21,3 +21,4 @@ We will touch on:
     . 0x0E-web_stack_debugging_1
 	. 0x10-https_ssl
     . 0x13-firewall
+    . 0x14-mysql
