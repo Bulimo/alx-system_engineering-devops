@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Fix container given to run as nginx user && listen on all active IPs on port 8080
+
+# change nginx config file with user 'nginx'
+sudo sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
+
+# update nginx file to listen to 8080
+sudo sed -i 's/\b80\b/8080/g/' /etc/nginx/sites-available/default
+sudo -u nginx service nginx restart
