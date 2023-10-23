@@ -18,7 +18,7 @@ def employee_todo_progress(employee_id):
     user_response = requests.get(user_url)
     if user_response.status_code == 200:
         user_info = user_response.json()
-        employee_name = user_info.get('name')
+        username = user_info.get('username')
 
         # get employees TODO list
         todo_url = "https://jsonplaceholder.typicode.com/todos"
@@ -34,7 +34,7 @@ def employee_todo_progress(employee_id):
                 json_task = {
                     "task": task.get('title'),
                     "completed": task.get('completed'),
-                    "username": employee_name
+                    "username": username
                 }
                 user_tasks.append(json_task)
         data[id] = user_tasks

@@ -25,7 +25,7 @@ def employee_todo_progress():
         data = {}
 
         for user in user_info:
-            employee_name = user.get('name')
+            username = user.get('username')
             employee_id = user.get('id')
 
             # create dict of dicts
@@ -36,7 +36,7 @@ def employee_todo_progress():
                     json_task = {
                         "task": task.get('title'),
                         "completed": task.get('completed'),
-                        "username": employee_name
+                        "username": username
                     }
                     user_tasks.append(json_task)
             data[employee_id] = user_tasks

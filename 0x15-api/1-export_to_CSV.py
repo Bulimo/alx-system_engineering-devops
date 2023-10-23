@@ -19,7 +19,7 @@ def employee_todo_progress(employee_id):
     user_response = requests.get(user_url)
     if user_response.status_code == 200:
         user_info = user_response.json()
-        employee_name = user_info.get('name')
+        username = user_info.get('username')
 
         # get employees TODO list
         todo_url = "https://jsonplaceholder.typicode.com/todos"
@@ -43,8 +43,8 @@ def employee_todo_progress(employee_id):
 
             for task in user_tasks:
                 writer.writerow({
-                    "USER_ID": task.get('userID'),
-                    "USERNAME": employee_name,
+                    "USER_ID": id,
+                    "USERNAME": username,
                     "TASK_COMPLETED_STATUS": task.get('completed'),
                     "TASK_TITLE": task.get('title')
                 })
