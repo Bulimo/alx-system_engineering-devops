@@ -27,7 +27,6 @@ def employee_todo_progress(employee_id):
         tasks = response.json()
 
         # calculate the progression
-        total_tasks = 0
         user_tasks = []
         for task in tasks:
             if task.get('userId') == id:
@@ -35,7 +34,7 @@ def employee_todo_progress(employee_id):
 
         # Export to CSV
         file_name = "{}.csv".format(id)
-        with open(file_name, mode='w', newline='') as csv_file:
+        with open(file_name, mode='w') as csv_file:
             fieldnames = ["USER_ID", "USERNAME",
                           "TASK_COMPLETED_STATUS", "TASK_TITLE"]
             writer = csv.DictWriter(

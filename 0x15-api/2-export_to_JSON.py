@@ -26,16 +26,16 @@ def employee_todo_progress(employee_id):
         tasks = response.json()
 
         # calculate the progression
-        total_tasks = 0
         user_tasks = []
         data = {}
         for task in tasks:
             json_task = {}
             if task.get('userId') == id:
-                json_task["task"] = task.get('title')
-                json_task["completed"] = "True" if task.get(
-                    'completed') else "False"
-                json_task["username"] = employee_name
+                json_task = {
+                    "task": task.get('title'),
+                    "completed": task.get('completed'),
+                    "username": employee_name
+                }
                 user_tasks.append(json_task)
         data[id] = user_tasks
 
