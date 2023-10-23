@@ -40,7 +40,6 @@ def employee_todo_progress(employee_id):
             writer = csv.DictWriter(
                 csv_file, fieldnames=fieldnames, quoting=csv.QUOTE_ALL
             )
-            writer.writeheader()
 
             for task in user_tasks:
                 task_status = "True" if task.get('completed') else "False"
