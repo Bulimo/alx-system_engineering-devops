@@ -42,11 +42,10 @@ def employee_todo_progress(employee_id):
             )
 
             for task in user_tasks:
-                task_status = "True" if task.get('completed') else "False"
                 writer.writerow({
-                    "USER_ID": id,
+                    "USER_ID": task.get('userID'),
                     "USERNAME": employee_name,
-                    "TASK_COMPLETED_STATUS": task_status,
+                    "TASK_COMPLETED_STATUS": task.get('completed'),
                     "TASK_TITLE": task.get('title')
                 })
 
