@@ -23,3 +23,4 @@ We will touch on:
     . 0x13-firewall
     . 0x14-mysql
     . 0x15-api
+    . 0x17-web_stack_debugging_3
