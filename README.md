@@ -26,3 +26,4 @@ We will touch on:
     . 0x16-api_advanced
     . 0x17-web_stack_debugging_3
     . 0x18-webstack_monitoring
+    . 0x19-postmortem
